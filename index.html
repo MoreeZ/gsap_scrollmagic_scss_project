@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Discover</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Montserrat|Open+Sans|Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="section1">
+      <div class="bg-overlay"></div>
+      <header>
+        <div class="header">
+          <div class="logo-cont">
+            <img src="assets/discover logo.png" alt="Discover" />
+          </div>
+          <div class="nav-cont">
+            <img
+              class="hamburger"
+              src="assets/hamburger.png"
+              alt="="
+              onclick="openMenu()"
+            />
+            <div class="navlist-bg"></div>
+            <div class="navlist-container">
+              <ul>
+                <li><a href="#">Tour</a></li>
+                <li><a href="#">Connect</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="heading">Discover</div>
+        <div class="heading2">the World</div>
+        <div class="boxes">
+          <div class="vision eachbox">
+            <div class="left">
+              <h4 class="boxheading">Through Vision</h4>
+              <p class="boxtext">What parts of the world do you want to see?</p>
+            </div>
+            <img src="assets/arrowboxes.png" alt="->" class="arrow" />
+          </div>
+          <div class="challenge eachbox">
+            <div class="left">
+              <h4 class="boxheading">Through Challenge</h4>
+              <p class="boxtext">Are you ready to challenge yourself?</p>
+            </div>
+            <img src="assets/arrowboxes.png" alt="->" class="arrow" />
+          </div>
+          <div class="experience eachbox">
+            <div class="left">
+              <h4 class="boxheading">Through Experience</h4>
+              <p class="boxtext">What do you want to experience?</p>
+            </div>
+            <img src="assets/arrowboxes.png" alt="->" class="arrow" />
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="section2" id="mytrigger">
+      <div class="s2-left">
+        <div class="s2-heading">
+          We are people with passion to explore the furthest ends of the world
+        </div>
+        <div class="s2-pic">
+          <img src="assets/photo.png" alt="[picture]" />
+        </div>
+      </div>
+      <div class="s2-right">
+        <div class="s2-text">
+          Illum et ipsa nostrum debitis. Voluptatem laudantium dicta non ipsam
+          in perspiciatis dolores ea. Dolorum laboriosam et iure aut voluptas
+          velit omnis qui. Repellat eos recusandae et et nulla velit dolores.
+          Illum et ipsa nostrum debitis. Voluptatem laudantium dicta non ipsam
+          in perspiciatis dolores ea. Dolorum laboriosam et iure aut voluptas
+          velit omnis qui. Repellat eos recusandae et et nulla velit dolores.
+        </div>
+        <div class="s2-buttons">
+          <div class="eachbutton btn1">
+            <div class="button-heading">Our Vision</div>
+            <div class="button-text">
+              Learn more about Discover and our plans for the future.
+            </div>
+            <div class="button-arrow">
+              <img src="assets/arrow button.png" alt="->" />
+            </div>
+            <div class="button-divider"></div>
+          </div>
+          <div class="eachbutton btn2">
+            <div class="button-heading">Tours</div>
+            <div class="button-text">
+              Check out our thrilling tours around the world.
+            </div>
+            <div class="button-arrow">
+              <img src="assets/arrow button.png" alt="->" />
+            </div>
+            <div class="button-divider"></div>
+          </div>
+          <div class="eachbutton btn3">
+            <div class="button-heading">Join us now</div>
+            <div class="button-text">
+              Join our team and get exclusive invites to organised events.
+            </div>
+            <div class="button-arrow">
+              <img src="assets/arrow button.png" alt="->" />
+            </div>
+            <div class="button-divider"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-list">
+        <div><a href="#">Contact us</a></div>
+        <div><a href="#">Terms of Service</a></div>
+        <div><a href="#">Apply</a></div>
+        <div><a href="#">Gallery</a></div>
+        <div class="sm-icons">
+          <a href="#"><img src="/assets/facebook.png" alt="Facebook"/></a>
+          <a href="#"><img src="/assets/instagram.png" alt="Instagram"/></a>
+          <a href="#"><img src="/assets/twitter.png" alt="Twitter"/></a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+    <script>
+      // init controller
+      var controller = new ScrollMagic.Controller();
+
+      var scroll1 = new TimelineMax();
+      var scroll2 = new TimelineMax();
+
+      scroll1.from(document.querySelector(".s2-heading"), 0.35, {
+        x: -200,
+        opacity: 0
+      });
+      scroll1.from(document.querySelector(".s2-text"), 0.35, {
+        x: 200,
+        opacity: 0
+      });
+      scroll2
+        .from(document.querySelector(".s2-pic"), 0.35, {
+          x: -200,
+          opacity: 0
+        })
+        .delay(0.2);
+      scroll2
+        .from(document.querySelector(".btn1"), 0.2, {
+          x: 200,
+          opacity: 0
+        })
+        .delay(0.2);
+      scroll2.from(document.querySelector(".btn2"), 0.2, {
+        x: 200,
+        opacity: 0
+      });
+      scroll2.from(document.querySelector(".btn3"), 0.2, {
+        x: 200,
+        opacity: 0
+      });
+
+      // build a scene
+      var scene = new ScrollMagic.Scene({
+        triggerElement: document.querySelector(".boxes")
+      })
+        .setTween(scroll1)
+        .addTo(controller);
+      var scene = new ScrollMagic.Scene({
+        triggerElement: document.querySelector(".boxes")
+      })
+        .setTween(scroll2)
+        .addTo(controller);
+
+      var t1 = new TimelineMax();
+      var t2 = new TimelineMax();
+
+      t1.from(".heading", 0.4, { x: -200, opacity: 0 });
+      t2.from(".heading2", 0.4, { x: 200, opacity: 0 });
+      t1.from(".vision", 0.18, { y: -100, opacity: 0 });
+      t1.from(".challenge", 0.18, { y: -100, opacity: 0 });
+      t1.from(".experience", 0.18, { y: -100, opacity: 0 });
+
+      // =========================================
+      let navstatus = "closed";
+      function openMenu() {
+        if (navstatus === "closed") {
+          document.querySelector(".navlist-bg").style.transform =
+            "translateY(310px)";
+
+          document.querySelector(".hamburger").style.transform =
+            "translateX(-74px)";
+          const listElements = new TimelineMax();
+          document
+            .querySelectorAll(".navlist-container ul li")
+            .forEach(eachLi => {
+              listElements.to(eachLi, 0.05, {
+                transform: "translateX(-180px)",
+                transition: "300ms ease all",
+                zIndex: 2,
+                ease: Linear
+              });
+            });
+
+          navstatus = "opened";
+        } else {
+          closeMenu();
+        }
+      }
+      function closeMenu() {
+        document.querySelector(".navlist-bg").style.transform =
+          "translateY(0px)";
+        const closeList = new TimelineMax();
+        document
+          .querySelectorAll(".navlist-container ul li")
+          .forEach(eachLi => {
+            closeList.to(eachLi, 0, {
+              transform: "translateX(0px)",
+              transition: "0ms ease all",
+              zIndex: 2,
+              ease: Linear
+            });
+          });
+
+        document.querySelector(".hamburger").style.transform =
+          "translateX(0px)";
+        navstatus = "closed";
+      }
+      //if window size changes and the nav remains open make sure to close it
+      window.addEventListener("resize", () => {
+        closeMenu();
+      });
+    </script>
+  </body>
+</html>

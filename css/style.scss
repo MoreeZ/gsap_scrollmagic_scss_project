@@ -1,0 +1,586 @@
+$colors: (
+  white: #f4f4f4,
+  black: #0e0e0e,
+  myGray: #474a4d,
+  lightGray: #9d9d9d,
+  lighterGray: #e6e6e6,
+  lightRed: #b24a4a,
+  red: #a32121
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+$desktop: 1120px;
+$beforeDesktop: 840px;
+$buttonArrowShift: 1320px;
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin beforeDesktop {
+  @media (min-width: #{$beforeDesktop}) {
+    @content;
+  }
+}
+
+@mixin buttonArrowShift {
+  @media (min-width: #{$buttonArrowShift}) {
+    @content;
+  }
+}
+
+body,
+html {
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Open Sans";
+  color: color(white);
+  background-color: color(white);
+  .section1 {
+    background-image: url("/assets/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    min-height: 100vh;
+    max-height: 650px;
+  }
+  @include beforeDesktop {
+    .section1 {
+      background-image: url("/assets/background.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-x: center;
+      min-height: 100vh;
+      max-height: 750px;
+    }
+  }
+  @include desktop {
+    .section1 {
+      background-image: url("/assets/background.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-x: center;
+      min-height: 100vh;
+      max-height: 850px;
+    }
+  }
+
+  .bg-overlay {
+    clip-path: inset(0 0 0 0 round 0% 0px 0% 100px);
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 190px;
+    // background-color: wheat;
+    background: linear-gradient(
+      to top right,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  @include beforeDesktop {
+    .bg-overlay {
+      clip-path: inset(0 0 0 0 round 0% 0px 0% 100px);
+      width: 70%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 50%;
+      transition: all 300ms ease;
+      background: linear-gradient(
+        to top right,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
+
+  header {
+    .logo-cont img {
+      height: 80px;
+      margin-left: 20px;
+      -webkit-user-select: none;
+    }
+
+    .nav-cont {
+      z-index: 999 !important;
+      .hamburger {
+        position: absolute;
+        height: 20px;
+        right: 20px;
+        top: 34px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: 300ms ease all;
+        transform: translateX(0px);
+        -webkit-user-select: none;
+      }
+      .navlist-bg {
+        background-color: rgba(71, 74, 77, 1);
+        border-radius: 0px 0px 0px 50px;
+        box-shadow: black 2px 2px 9px;
+        width: 160px;
+        z-index: 2;
+        position: absolute;
+        top: -310px;
+        right: 0;
+        height: 300px;
+        transform: translateY(0px);
+        transition: all 500ms ease;
+      }
+      .navlist-container {
+        position: absolute;
+        right: -180px;
+        top: 0;
+        width: 160px;
+        padding-top: 50px;
+        ul {
+          list-style-type: none;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          position: absolute;
+          li {
+            margin-bottom: 10px;
+
+            a {
+              font-size: 20px;
+              font-family: "Montserrat";
+              color: color(white);
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    @include beforeDesktop {
+      .logo-cont img {
+        height: 60px;
+        margin-top: 20px;
+        margin-left: 10%;
+      }
+
+      .nav-cont {
+        .hamburger {
+          display: none;
+        }
+        .navlist-container {
+          width: 75%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          background: none;
+          height: 80px;
+          display: flex;
+          justify-content: center;
+          box-shadow: none;
+          background: none;
+          padding-top: 0px;
+          ul {
+            list-style-type: none;
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+
+            li {
+              // margin-left: 20px;
+              a {
+                font-size: 15px;
+                font-family: "Open Sans";
+                color: color(white);
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+
+    .heading {
+      font-family: "Archivo Black";
+      font-size: 3em;
+      width: 6em;
+      text-align: center;
+      align-self: center;
+      margin-top: 0.6em;
+    }
+    .heading2 {
+      font-family: "Archivo Black";
+      font-size: 3em;
+      width: 6em;
+      text-align: center;
+      align-self: center;
+      margin-bottom: 2em;
+    }
+
+    .boxes {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow-x: scroll;
+      width: 100%;
+
+      .eachbox {
+        min-width: 200px;
+        max-width: 200px;
+        height: 115px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 30px;
+        background-color: color(white);
+        color: color(black);
+        border-radius: 0px 10px;
+
+        .boxheading {
+          font-size: 20px;
+          padding: 0;
+          margin: 0;
+        }
+        .boxtext {
+          font-size: 14px;
+          color: #696969;
+        }
+        .arrow {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    @include beforeDesktop {
+      .heading {
+        font-family: "Archivo Black";
+        font-size: 4em;
+        width: 6em;
+        align-self: flex-start;
+        text-align: left;
+        margin-left: 10%;
+        margin-top: 5%;
+      }
+      .heading2 {
+        font-family: "Archivo Black";
+        font-size: 4em;
+        width: 6em;
+        align-self: flex-start;
+        text-align: left;
+        margin-left: 10%;
+        margin-bottom: 10%;
+      }
+
+      .boxes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        flex: 1;
+        margin-bottom: 40px;
+
+        .eachbox {
+          min-width: 200px;
+          max-width: 500px;
+          height: 115px;
+          margin-left: 10px;
+          margin-right: 10px;
+          padding: 30px;
+          background-color: color(white);
+          color: color(black);
+          border-radius: 0px 10px;
+
+          .boxheading {
+            font-size: 20px;
+            padding: 0;
+            margin: 0;
+          }
+          .boxtext {
+            font-size: 14px;
+            color: color(lightGray);
+          }
+          .arrow {
+            margin-top: 10px;
+            padding-right: 400px;
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      .heading {
+        font-family: "Archivo Black";
+        font-size: 7em;
+        width: 6em;
+        align-self: flex-start;
+        text-align: left;
+        margin-left: 10%;
+        margin-top: 5%;
+      }
+      .heading2 {
+        font-family: "Archivo Black";
+        font-size: 7em;
+        width: 6em;
+        align-self: flex-start;
+        text-align: left;
+        margin-left: 10%;
+        margin-bottom: 10%;
+      }
+
+      .boxes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .eachbox {
+          clip-path: inset(0 0 0 0 round 0 10px 0 10px);
+          width: 270px;
+          height: 80px;
+          margin-left: 2%;
+          margin-right: 2%;
+          padding: 30px;
+          background-color: color(white);
+          color: color(black);
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+
+          .boxheading {
+            font-size: 1.4em;
+            padding: 0;
+            margin: 0;
+          }
+          .boxtext {
+            font-size: 14px;
+            color: color(lightGray);
+          }
+          .arrow {
+            margin-top: 10px;
+            height: 14px;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+  // ============================================================
+  .section2 {
+    position: relative;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    .s2-left {
+      .s2-heading {
+        color: color(black);
+        font-family: "Montserrat";
+        margin-bottom: 40px;
+        font-size: 26px;
+        font-weight: 1000;
+      }
+
+      .s2-pic {
+        margin-bottom: 40px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .s2-right {
+      .s2-text {
+        color: color(myGray);
+        font-family: "Open Sans";
+
+        font-size: 16px;
+      }
+
+      .s2-buttons {
+        width: 100%;
+        margin-top: 40px;
+
+        .eachbutton {
+          margin-bottom: 40px;
+
+          .button-heading {
+            color: color(black);
+            font-family: "Open Sans";
+            font-size: 22px;
+            font-weight: 1000;
+            margin-bottom: 10px;
+          }
+          .button-text {
+            color: color(lightGray);
+            font-family: "Open Sans";
+            font-size: 16px;
+            margin-bottom: 16px;
+          }
+          .button-divider {
+            height: 1px;
+            margin-top: 16px;
+            background-color: color(lightGray);
+          }
+        }
+      }
+    }
+  }
+  @include beforeDesktop {
+    .section2 {
+      padding-left: 10%;
+      padding-right: 10%;
+      display: flex;
+      flex-direction: row;
+      margin-top: 40px;
+
+      .s2-left {
+        max-width: 30%;
+        .s2-heading {
+          color: color(black);
+          font-family: "Montserrat";
+          margin-bottom: 40px;
+          font-size: 30px;
+          font-weight: 1000;
+        }
+
+        .s2-pic {
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .s2-right {
+        padding-left: 100px;
+        flex: 1;
+
+        .s2-text {
+          color: color(myGray);
+          font-family: "Open Sans";
+          margin-top: 0px;
+          font-size: 16px;
+          line-height: 30px;
+        }
+
+        .s2-buttons {
+          width: 100%;
+          margin-top: 40px;
+
+          .eachbutton {
+            margin-bottom: 40px;
+
+            .button-heading {
+              color: color(black);
+              font-family: "Open Sans";
+              font-size: 30px;
+              font-weight: 1000;
+              margin-bottom: 10px;
+            }
+            .button-text {
+              color: color(lightGray);
+              font-family: "Open Sans";
+              font-size: 18px;
+              margin-bottom: 16px;
+            }
+            .button-divider {
+              height: 1px;
+              margin-top: 16px;
+              background-color: color(lightGray);
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    background-color: color(myGray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .footer-list {
+      list-style-type: none;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 160px;
+      justify-content: space-around;
+      div {
+        h2 {
+          text-align: center;
+        }
+        a {
+          color: color(white);
+          text-decoration: none;
+        }
+        span {
+          color: color(white);
+        }
+      }
+      .sm-icons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 200px;
+        padding-top: 8px;
+        img {
+          height: 22px;
+        }
+      }
+    }
+    @include beforeDesktop {
+      .footer-list {
+        list-style-type: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 40px;
+        width: 100%;
+        justify-content: space-around;
+        div {
+          h2 {
+            text-align: center;
+          }
+          a {
+            color: color(white);
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+          span {
+            color: color(white);
+          }
+        }
+        .sm-icons {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          width: 200px;
+          padding-top: 8px;
+          img {
+            height: 22px;
+          }
+        }
+      }
+    }
+  }
+}
